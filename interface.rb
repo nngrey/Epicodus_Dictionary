@@ -1,7 +1,6 @@
 require './lib/dictionary'
 @current_term
 
-
 def main_menu
   puts "\nPress 'a' to add a new term to the dictionary"
   puts "Press 's' to search the dictionary for a word"
