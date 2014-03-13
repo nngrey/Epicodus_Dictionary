@@ -2,29 +2,46 @@ class Term
 
   @@terms = []
 
-  def initialize(word, definition)
+
+  def initialize(word, definitions)
     @word = word
-    @definition = definition
+    @definitions_array = definitions
+
   end
 
   def Term.clear
     @@terms = []
   end
 
-  def Term.create(word, definition)
-    new_term = Term.new(word, definition)
+  def Term.create(word, definitions_array)
+    new_term = Term.new(word, definitions_array)
     new_term.save
     new_term
   end
 
-  def Term.all
+  def Term.search(word)
+    @@terms.each do |term|
+      if word == term.word
+      return term
+      end
+    end
+  end
+
+  def word_edit(new_word)
+    @word = new_word
+  end
+
+  def definition_edit(new_definition)
+    @definition = new_definition
+  end
+
+  def Term.delete(index)
+    @@terms.delete_at(index)
     @@terms
   end
 
-  def Term.list_words
-    @@terms.each do |term|
-      p term.word
-    end
+  def Term.all
+    @@terms
   end
 
   def save
@@ -36,9 +53,12 @@ class Term
   end
 
   def definition
-    @definition
+    @definitions_array
   end
 
+  def add_definition(new_definition)
+    @definitions_array << new_definition
+  end
 end
 
       # new_term = Term.new("apple", "is a red fruit")

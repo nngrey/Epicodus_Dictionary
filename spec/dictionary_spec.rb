@@ -36,6 +36,21 @@ describe Term  do
       Term.all.should eq []
     end
   end
+
+  describe ".delete" do
+    it 'should delete an instance of a term' do
+      new_term = Term.create("apple", "red")
+      Term.delete(0).should eq []
+    end
+  end
+
+  describe ".search" do
+    it 'should search for and return a term in the dictionary' do
+      new_term = Term.create("apple", "red")
+      Term.search("apple").should eq Term.all[0]
+    end
+  end
+
   describe '#save' do
     it 'should save the instance in the terms array' do
       new_term = Term.new("banana", "is a yellow fruit")
@@ -44,14 +59,11 @@ describe Term  do
     end
   end
 
-  # describe '.list_words' do
-  #   it 'should list all the words saved in the terms array' do
-  #     new_term = Term.new("apple", "is a red fruit")
-  #     new_term.save
-  #     new_term = Term.create("banana", "is a yellow fruit")
-  #     new_term.save
-  #     Term.list_words.should eq "apple" + ", " + "banana"
-  #   end
-  # end
-
+  describe "#word_edit" do
+    it 'should update the word' do
+      new_term = Term.create("apple", "red")
+      edited_term = new_term.word_edit("banana")
+      edited_term.should eq new_term.word
+    end
+  end
 end
