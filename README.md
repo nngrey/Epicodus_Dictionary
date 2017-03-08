@@ -1,4 +1,4 @@
-Epicodus Exercise in Ruby
+#Epicodus Exercise in Ruby
 
 Dictionary
 Create a program that lets users create a dictionary. Read through all the requirements below, then implement them one at a time:
